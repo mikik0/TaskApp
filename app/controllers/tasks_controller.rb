@@ -6,6 +6,10 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def mytask
+    @tasks = Task.all
+  end
+
   # GET /tasks/1 or /tasks/1.json
   def show
   end
@@ -17,6 +21,10 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+  end
+
+  def assign
+    @tasks = Task.all
   end
 
   # POST /tasks or /tasks.json

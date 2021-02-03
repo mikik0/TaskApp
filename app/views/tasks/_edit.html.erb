@@ -27,13 +27,12 @@
     </div>
   
     <div class="field">
-      <%= form.label :user_id %>
-      <%= form.select :user_id %> #なおす！！
+      <%= form.hidden_field :user_id, :value => current_user.id %>
     </div>
   
     <div class="field">
       <%= form.label :status %>
-      <%= form.select :status, [['未対応',0],['完了',1]] %>
+      <%= form.select :status, [['未対応',0],['対応中',1],['完了',2]] %>
     </div>
   
     <div class="actions">

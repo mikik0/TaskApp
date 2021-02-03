@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     get "sign_in", :to => "users/sessions#new"
     get "sign_out", :to => "users/sessions#destroy"
   end
+  get "mytask" => "tasks#mytask"
+  get "tasks/:id/assign" => "tasks#assign"
 
 end
