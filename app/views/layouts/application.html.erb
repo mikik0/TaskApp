@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     </head>
 
-  <body class="text-center">
+  <body>
     <div class="wrapper">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="/">タスク管理アプリ</a>
@@ -37,8 +37,8 @@
       </nav>
     <main class="layout">
       <div class="container-fluid py-4 mw-md">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
       <% if user_signed_in? %>
         <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
       <% end %>
@@ -48,5 +48,4 @@
     <footer>
       <p>© All rights reserved by hashino</p>
     </footer>
-  </div>
 </html>

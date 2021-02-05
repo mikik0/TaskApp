@@ -1,29 +1,26 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
-
-<p>
-  <strong>Deadline:</strong>
-  <%= @task.deadline %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @task.user.name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @task.status %>
-</p>
-
-<%= link_to '編集', edit_task_path(@task) %> |
-<%= link_to '戻る', tasks_path %>
+<div class="mx-auto" style="width: 900px;">
+    <div class="card bg-light mb-3">
+      <div class="card-body">
+        <h1 class="card-title"><%= @task.title %></h1>
+          <p class="card-text">
+          <%= @task.content %><br>
+          期限: <%= @task.deadline %><br>
+          担当者: <%= @task.user.name %><br>
+          ステータス: 
+          <% if @task.status == 0 %>
+          未対応
+          <% elsif @task.status == 1  %>
+          対応中
+          <% else %>
+          完了
+          <% end %>
+          </p>
+          <% if @task.user_id.to_i == current_user.id %>
+            <%= link_to '編集', edit_task_path(@task) %> |
+          <% end %>
+          <%= link_to '戻る', tasks_path %>
+          アサイン
+        </div>
+    </div>
+</div>
