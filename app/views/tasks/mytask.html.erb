@@ -10,31 +10,60 @@
 <div class="row">
   <% @tasks.each do |task| %>
     <% if task.user_id.to_i == current_user.id %>
-    <div class="card border-primary mb-4" style="max-width: 40rem;">
-      <div class="card-header"><%= task.title %>
+      <% if (task.deadline - Date.today).to_i < 0 %>
+      <%# 期限切れ　%>
+        <div class="card text-white bg-danger mb-4" style="max-width: 40rem;">
+          <div class="card-header bg-danger text-white"><%= task.title %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= task.content %></h5>
+            <p class="card-text">
+            期限: <%= task.deadline %><br>
+            担当者: <%= task.user.name %><br>
+            ステータス: 
+            <% if task.status == 0 %>
+              未対応
+            <% elsif task.status == 1  %>
+              対応中
+            <% else %>
+              完了
+            <% end %>
+            
+            </p>
+            <%= link_to '詳細', task %>
+            <% if task.user_id.to_i == current_user.id %>
+              <%= link_to '編集', edit_task_path(task) %><br>
+              <%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+      <%# 期限きてない　%>
+      <div class="card border-primary mb-4" style="max-width: 40rem;">
+        <div class="card-header"><%= task.title %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= task.content %></h5>
+          <p class="card-text">
+          期限: <%= task.deadline %><br>
+          担当者: <%= task.user.name %><br>
+          ステータス: 
+          <% if task.status == 0 %>
+            未対応
+          <% elsif task.status == 1  %>
+            対応中
+          <% else %>
+            完了
+          <% end %>
+          </p>
+          <%= link_to '詳細', task %>
+          <% if task.user_id.to_i == current_user.id %>
+            <%= link_to '編集', edit_task_path(task) %><br>
+            <%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title"><%= task.content %></h5>
-        <p class="card-text">
-        期限: <%= task.deadline %><br>
-        担当者: <%= task.user.name %><br>
-        ステータス: 
-        <% if task.status == 0 %>
-        未対応
-        <% elsif task.status == 1  %>
-        対応中
-        <% else %>
-        完了
-        <% end %>
-        
-        </p>
-        <%= link_to '詳細', task %>
-        <% if task.user_id.to_i == current_user.id %>
-          <%= link_to '編集', edit_task_path(task) %><br>
-          <%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div>
-    </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

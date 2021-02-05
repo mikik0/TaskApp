@@ -1,26 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>タスク担当編集</h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+<%= render 'assign', task: @task %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
-
-<p>
-  <strong>Deadline:</strong>
-  <%= @task.deadline %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @task.user.name %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @task.status %>
-</p>
+<%= link_to 'Show', @task %> |
+<%= link_to 'Back', tasks_path %>

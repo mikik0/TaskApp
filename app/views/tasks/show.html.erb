@@ -18,9 +18,9 @@
           </p>
           <% if @task.user_id.to_i == current_user.id %>
             <%= link_to '編集', edit_task_path(@task) %> |
+            <%= link_to 'アサイン', '/tasks/:id/assign', method: :get %>
           <% end %>
           <%= link_to '戻る', tasks_path %>
-          アサイン
         </div>
     </div>
 </div>
