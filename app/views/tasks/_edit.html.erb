@@ -13,17 +13,17 @@
   
     <div class="field">
       <%= form.label :title %>
-      <%= form.text_field :title %>
+      <%= form.text_field :title, class: "form-control" %>
     </div>
   
     <div class="field">
       <%= form.label :content %>
-      <%= form.text_area :content %>
+      <%= form.text_area :content, class: "form-control" %>
     </div>
   
     <div class="field">
       <%= form.label :deadline %>
-      <%= form.date_select :deadline %>
+      <%= form.date_select :deadline, class: "form-control" %>
     </div>
   
     <div class="field">
@@ -36,6 +36,6 @@
     </div>
   
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit "登録する", class: "btn btn-success" %>
     </div>
   <% end %>  
