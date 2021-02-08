@@ -18,7 +18,7 @@
           </p>
           <% if @task.user_id.to_i == current_user.id %>
             <%= link_to '編集', edit_task_path(@task), class: "btn btn-primary" %> |
-            <%= link_to 'アサイン', '/tasks/:id/assign', method: :get, class: "btn btn-success" %>
+            <%= link_to 'アサイン', tasks_assign_path(@task), class: "btn btn-success" %>
           <% end %>
           <%= link_to '一覧へ戻る', tasks_path, class: "btn btn-light" %>
         </div>

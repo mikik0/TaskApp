@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy]
+  before_action :set_task, only: %i[ show edit update destroy assign]
 
   # GET /tasks or /tasks.json
   def index
@@ -23,10 +23,10 @@ class TasksController < ApplicationController
   def edit
   end
 
+  # GET /tasks/1/assign
   def assign
     @tasks = Task.find(params[:id])
-    p "#############"
-    p params[:id]
+    @users = User.all
   end
 
   # POST /tasks or /tasks.json

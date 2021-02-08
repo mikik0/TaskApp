@@ -1,41 +1,32 @@
-<%= form_with(model: task, local: true) do |form| %>
-  <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
-      <ul>
-      <% task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+新しくアサインするユーザー
+<%= form_with(model: @task,local: true) do |form|%>
+  <div class="form">
+    <div class="form-body">
+      <%= form.collection_select(:user_id, @users, :id, :name)%>
+      <%= form.submit "アサイン", class: "btn btn-success"%>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deadline %>
-    <%= form.date_select :deadline %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :user_id, :value => current_user.id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, [['未対応',0],['対応中',1],['完了',2]] %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>  
+<% end %>
+  
+現在アサインされているユーザー
+<p><%= @task.user.name %></p>
+<p id="notice"><%= notice %></p>
+<div class="mx-auto" style="width: 900px;">
+    <div class="card bg-light mb-3">
+      <div class="card-body">
+        <h1 class="card-title"><%= @task.title %></h1>
+          <p class="card-text">
+          <%= @task.content %><br>
+          期限: <%= @task.deadline %><br>
+          ステータス: 
+          <% if @task.status == 0 %>
+          未対応
+          <% elsif @task.status == 1  %>
+          対応中
+          <% else %>
+          完了
+          <% end %>
+          </p>
+        </div>
+    </div>
+</div>

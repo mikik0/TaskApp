@@ -12,6 +12,5 @@ Rails.application.routes.draw do
     get "sign_out", :to => "users/sessions#destroy"
   end
   get "mytask" => "tasks#mytask"
-  get "tasks/:id/assign" => "tasks#assign"
-
+  get "tasks/:id/assign", to: "tasks#assign", as: :tasks_assign
 end
