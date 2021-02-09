@@ -10,7 +10,7 @@
 <div class="row">
   <% @tasks.each do |task| %>
     <% if task.user_id.to_i == current_user.id %>
-      <% if (task.deadline - Date.today).to_i < 0 %>
+      <% if (task.deadline - Time.now).to_i < 0 %>
       <%# 期限切れ　%>
         <div class="card text-white bg-danger mb-4" style="max-width: 40rem;">
           <div class="card-header bg-danger text-white"><%= task.title %>
@@ -32,7 +32,7 @@
             </p>
             <%= link_to '詳細', task, class: "btn btn-light" %>
             <% if task.user_id.to_i == current_user.id %>
-              <%= link_to '編集', edit_task_path(task), class: "btn btn-primary" %><br>
+              <%= link_to '編集', edit_task_path(task), class: "btn btn-primary" %>
               <%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
             <% end %>
           </div>
