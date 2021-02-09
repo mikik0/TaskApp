@@ -65,8 +65,10 @@ gem 'devise'
 
 group :development do
   gem 'letter_opener_web', '~> 1.0'
+  gem "bullet"
 end
 
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem "kaminari"

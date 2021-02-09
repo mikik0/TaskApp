@@ -8,11 +8,10 @@
 
 <div class="container">
 <div class="row">
-  <% @tasks.each do |task| %>
-    <% if task.user_id.to_i == current_user.id %>
-      <% if (task.deadline - Time.now).to_i < 0 %>
+  <% @tasks.find_each do |task| %>
+    <% if (task.deadline - Time.now).to_i < 0 %>
       <%# 期限切れ　%>
-        <div class="card text-white bg-danger mb-4" style="max-width: 40rem;">
+        <div class="card text-white bg-danger mb-4 mx-2" style="max-width: 40rem;">
           <div class="card-header bg-danger text-white"><%= task.title %>
           </div>
           <div class="card-body">
@@ -39,7 +38,7 @@
         </div>
       <% else %>
       <%# 期限きてない　%>
-      <div class="card border-primary mb-4" style="max-width: 40rem;">
+      <div class="card border-primary mb-4 mx-2" style="max-width: 40rem;">
         <div class="card-header"><%= task.title %>
         </div>
         <div class="card-body">
@@ -63,8 +62,8 @@
           <% end %>
         </div>
       </div>
-      <% end %>
     <% end %>
   <% end %>
+  <div class='p-top__paginate'><%= paginate @tasks %></div>
 </div>
 </div>

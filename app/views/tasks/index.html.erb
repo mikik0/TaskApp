@@ -33,7 +33,7 @@
         </div>
       <% else %>
       <%# 期限きてない　%>
-      <div class="card border-primary mb-4" style="max-width: 40rem;">
+      <div class="card border-primary mb-4 mx-2" style="max-width: 40rem;">
         <div class="card-header"><%= task.title %>
         </div>
         <div class="card-body">
@@ -59,5 +59,6 @@
       </div>
       <% end %>
     <% end %>
+    <div class='p-top__paginate'><%= paginate @tasks %></div>
   </div>
 </div>

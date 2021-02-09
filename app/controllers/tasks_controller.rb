@@ -3,11 +3,11 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.index_all.page(params[:page])
   end
 
   def mytask
-    @tasks = Task.all
+    @tasks = Task.where(user_id: current_user.id).where.not(status: 2).index_all.page(params[:page])
   end
 
   # GET /tasks/1 or /tasks/1.json
