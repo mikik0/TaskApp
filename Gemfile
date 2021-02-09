@@ -68,6 +68,10 @@ group :development do
   gem "bullet"
 end
 
+group :production do
+  gem 'pg', '0.21.0'
+end
+
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-i18n'
