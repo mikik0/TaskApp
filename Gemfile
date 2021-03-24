@@ -73,4 +73,4 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem "kaminari"
-gem 'bootstrap4-kaminari-views'
+gem 'bootstrap4-kaminari-views
