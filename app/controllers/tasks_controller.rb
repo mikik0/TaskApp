@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy assign]
+  before_action :authenticate_user!
+  before_action :set_task, only: %i[ edit update destroy assign]
 
   # GET /tasks or /tasks.json
   def index
@@ -12,6 +13,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    @task = Task.find(params[:id])
   end
 
   # GET /tasks/new
@@ -70,6 +72,9 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+      unless @task.user.id == current_user.id
+        redirect_to mytask_path
+      end
     end
 
     # Only allow a list of trusted parameters through.
